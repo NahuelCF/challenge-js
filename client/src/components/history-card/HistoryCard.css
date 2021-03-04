@@ -4,4 +4,8 @@
   border: solid 2px black;
   border-radius: 5px;
   background-color: #46cdcf;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 500;
 }
