@@ -1,0 +1,62 @@
+.newOperation-container {
+  height: 100vh;
+  width: 100%;
+  background-color: #48466d;
+  display: grid;
+  grid-template-rows: [start-title] 25% [end-title start-form] 75% [end-form];
+}
+
+.title {
+  color: white;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 7rem;
+  justify-items: center;
+  align-items: center;
+  margin: 0 15rem;
+}
+
+input,
+select,
+button {
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  color: white;
+}
+
+.lists-container {
+  height: 100vh;
+  width: 100%;
+  background-color: lavenderblush;
+  display: flex;
+}
+
+.list-income {
+  width: 50%;
+  height: 100vh;
+  background-color: lightgreen;
+}
+
+.list-out {
+  width: 50%;
+  height: 100vh;
+  background-color: red;
+}
+
+input {
+  width: 10rem;
+}
