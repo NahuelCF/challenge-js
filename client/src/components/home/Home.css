@@ -37,3 +37,14 @@
   padding: 1rem;
   box-sizing: border-box;
 }
+
+@media all and (max-width: 700px) {
+  .home-container {
+    display: block;
+  }
+
+  .balance-container,
+  .history-container {
+    width: 100%;
+  }
+}
