@@ -41,22 +41,41 @@ button {
 .lists-container {
   height: 100vh;
   width: 100%;
-  background-color: lavenderblush;
+  background-color: #3d84a8;
   display: flex;
+  color: white;
 }
 
-.list-income {
+.list {
   width: 50%;
   height: 100vh;
-  background-color: lightgreen;
+  display: flex;
+  flex-direction: column;
 }
 
-.list-out {
-  width: 50%;
+.cards-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   height: 100vh;
-  background-color: red;
+  overflow: auto;
 }
 
 input {
   width: 10rem;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #abedd8;
+  border-radius: 10px;
 }

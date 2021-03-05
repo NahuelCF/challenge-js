@@ -1,3 +1,4 @@
+import { HistoryCard } from "../history-card/HistoryCard"
 import "./NewOperation.css"
 
 export const NewOperation = () => {
@@ -25,12 +26,46 @@ export const NewOperation = () => {
                             <option>Out</option>
                         </select>
                     </div>
-                    <button style={{ gridColumn: "1/-1" }}>CLICK</button>
+                    <button style={{ gridColumn: "1/-1" }}>Done</button>
                 </div>
             </div>
             <div className="lists-container">
-                <div className="list-income">Income List</div>
-                <div className="list-out">Out list</div>
+                <div className="list">
+                    <h2>Income List</h2>
+                    <div className="cards-container">
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                    </div>
+                </div>
+                <div className="list">
+                    <h2>Out list</h2>
+                    <div className="cards-container">
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                        <HistoryCard addButtons="true"></HistoryCard>
+                    </div>
+                </div>
             </div>
         </div >
     )
