@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "type": "income",
+    "amount": "2500",
+    "date": "04/2/2021"
+  },
+  {
+    "id": "2",
+    "type": "out",
+    "amount": "1500",
+    "date": "04/2/2021"
+  },
+  {
+    "id": "3",
+    "type": "income",
+    "amount": "2500",
+    "date": "04/2/2021"
+  },
+  {
+    "id": "4",
+    "type": "out",
+    "amount": "3000",
+    "date": "04/2/2021"
+  },
+  {
+    "id": "5",
+    "type": "income",
+    "amount": "3500",
+    "date": "04/2/2021"
+  },
+  {
+    "id": "6",
+    "type": "out",
+    "amount": "2000",
+    "date": "04/2/2021"
+  },
+  {
+    "id": "7",
+    "type": "income",
+    "amount": "1500",
+    "date": "04/2/2021"
+  },
+  {
+    "id": "8",
+    "type": "out",
+    "amount": "2000",
+    "date": "04/2/2021"
+  },
+  {
+    "id": "9",
+    "type": "income",
+    "amount": "3000",
+    "date": "04/2/2021"
+  },
+  {
+    "id": "10",
+    "type": "out",
+    "amount": "2500",
+    "date": "04/2/2021"
+  },
+  {
+    "id": "11",
+    "type": "income",
+    "amount": "3500",
+    "date": "04/2/2021"
+  },
+  {
+    "id": "12",
+    "type": "out",
+    "amount": "1000",
+    "date": "04/2/2021"
+  }
+]
