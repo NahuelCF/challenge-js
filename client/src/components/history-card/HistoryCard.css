@@ -10,3 +10,10 @@
   font-weight: 500;
   margin-bottom: 0.7rem;
 }
+
+.card-button {
+  border: none;
+  background-color: transparent;
+  font-size: large;
+  color: white;
+}

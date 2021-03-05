@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+
 import "./HistoryCard.css"
 
 export const HistoryCard = (props) => {
@@ -6,8 +9,12 @@ export const HistoryCard = (props) => {
         if (props.addButtons) {
             return (
                 <div>
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    <button className="card-button">
+                        <FontAwesomeIcon icon={faEdit} />
+                    </button>
+                    <button className="card-button">
+                        <FontAwesomeIcon icon={faTrashAlt} />
+                    </button>
                 </div>
             )
         }
