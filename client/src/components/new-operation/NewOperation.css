@@ -79,3 +79,40 @@ input {
   background: #abedd8;
   border-radius: 10px;
 }
+
+@media all and (min-width: 800px) and (max-width: 950px) {
+  .form-container {
+    margin: 0 10rem;
+  }
+}
+
+@media all and (min-width: 650px) and (max-width: 800px) {
+  .form-container {
+    margin: 0 5rem;
+  }
+}
+
+@media all and (max-width: 650px) {
+  .form-container {
+    margin: 0;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .lists-container {
+    display: block;
+    height: 100%;
+  }
+
+  .list {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+}
