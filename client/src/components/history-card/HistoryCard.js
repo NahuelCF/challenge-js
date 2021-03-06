@@ -7,6 +7,10 @@ import { useState } from 'react'
 export const HistoryCard = (props) => {
 
     const [display, setDisplay] = useState("none")
+    const [concept, setConcept] = useState("")
+    const [amount, setAmount] = useState("")
+    const [date, setDate] = useState("")
+
 
     const buttonsTemplate = () => {
         if (props.addButtons) {
@@ -24,12 +28,26 @@ export const HistoryCard = (props) => {
     }
 
 
-    const changeDisplay = () => {
-        if (display == "none") {
-            setDisplay("flex")
-        } else {
-            setDisplay("none")
+    const changeDisplay = (editDone) => {
+        if (!props.editing || editDone) {
+            props.startEditing()
+            if (display == "none") {
+                setDisplay("flex")
+            } else {
+                setDisplay("none")
+            }
         }
+    }
+
+    const resetStates = () => {
+        setConcept("")
+        setAmount("")
+        setDate("")
+        console.log("States reseted")
+    }
+
+    const updateOperation = () => {
+        console.log("Operation updated!")
     }
 
     return (
@@ -58,8 +76,16 @@ export const HistoryCard = (props) => {
                         <input name="date" type="date"></input>
                     </div>
                     <div className="card-buttons-edit">
-                        <button>Cancel</button>
-                        <button>Save</button>
+                        <button onClick={() => {
+                            resetStates()
+                            changeDisplay(true)
+                            props.endEditing()
+                        }}>Cancel</button>
+                        <button onClick={() => {
+                            updateOperation()
+                            changeDisplay(true)
+                            props.endEditing()
+                        }}>Save</button>
                     </div>
                 </div>
             </div>
