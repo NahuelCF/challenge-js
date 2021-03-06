@@ -5,7 +5,7 @@ export const getOperations = async () => {
     await fetch("http://localhost:3001/getOperations")
         .then(result => result.json())
         .then((items) => {
-            operations = items.items.map(operation => Operation.fromJSON(operation))
+            operations = items.map(operation => Operation.fromJSON(operation))
         })
-    console.log(operations)
+    return operations
 }
