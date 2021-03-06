@@ -4,7 +4,7 @@ const router = Router()
 
 const operations = require("../sample.json")
 
-router.get("/", (req, res) => {
+router.get("/getOperations", (req, res) => {
     res.json(operations)
 })
 
