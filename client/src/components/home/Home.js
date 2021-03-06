@@ -1,7 +1,21 @@
 import { HistoryCard } from "../history-card/HistoryCard"
 import "./Home.css"
 
+import { useState, useEffect } from "react"
+import { getOperations } from "../../service"
+
 export const Home = (props) => {
+
+    const [operations, setOperations] = useState([])
+
+    useEffect(() => {
+        const getOperationsLocal = async () => {
+            let operations = await getOperations()
+            setOperations(operations.slice(1).slice(-10))
+        }
+        getOperationsLocal()
+    }, [])
+
     return (
         <div className="home-container">
             <div className="balance-container">
@@ -12,16 +26,7 @@ export const Home = (props) => {
                 </h1>
             </div>
             <div className="history-container">
-                <HistoryCard></HistoryCard>
-                <HistoryCard></HistoryCard>
-                <HistoryCard></HistoryCard>
-                <HistoryCard></HistoryCard>
-                <HistoryCard></HistoryCard>
-                <HistoryCard></HistoryCard>
-                <HistoryCard></HistoryCard>
-                <HistoryCard></HistoryCard>
-                <HistoryCard></HistoryCard>
-                <HistoryCard></HistoryCard>
+                {[...operations].map(operation => <HistoryCard operation={operation} />)}
             </div>
         </div>
     )
