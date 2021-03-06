@@ -1,5 +1,6 @@
 export class Operation {
-    constructor(concept, amount, type, date) {
+    constructor(id, concept, amount, type, date) {
+        this.id = id
         this.concept = concept
         this.amount = amount
         this.type = type
@@ -8,6 +9,7 @@ export class Operation {
 
     static fromJSON(operationJSON) {
         return new Operation(
+            operationJSON.id,
             operationJSON.concept,
             operationJSON.amount,
             operationJSON.type,
