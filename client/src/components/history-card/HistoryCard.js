@@ -10,7 +10,7 @@ export const HistoryCard = (props) => {
     const [concept, setConcept] = useState("")
     const [amount, setAmount] = useState("")
     const [date, setDate] = useState("")
-
+    const operation = props.operation
 
     const buttonsTemplate = () => {
         if (props.addButtons) {
@@ -53,9 +53,9 @@ export const HistoryCard = (props) => {
     return (
         <div className="card-container">
             <div className="history-card">
-                <div>$1500</div>
-                <div>Income</div>
-                <div>15/05/2020</div>
+                <div>${operation.amount}</div>
+                <div>{operation.type}</div>
+                <div>{operation.date}</div>
                 {buttonsTemplate()}
             </div>
 
