@@ -1,10 +1,21 @@
 import { HistoryCard } from "../history-card/HistoryCard"
 import "./NewOperation.css"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { getOperations } from "../../service"
 
 export const NewOperation = () => {
     const [editing, setEditing] = useState(false)
+
+    const [operations, setOperations] = useState([])
+
+    useEffect(() => {
+        const getOperationsLocal = async () => {
+            let operations = await getOperations()
+            setOperations(operations)
+        }
+        getOperationsLocal()
+    }, [])
 
     const startEditing = () => {
         setEditing(true)
@@ -45,71 +56,21 @@ export const NewOperation = () => {
                 <div className="list">
                     <h2>Income List</h2>
                     <div className="cards-container">
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
+                        {[...operations].filter(operation => operation.type == "income").map(
+                            operation => <HistoryCard
+                                editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true" operation={operation}
+                            ></HistoryCard>
+                        )}
                     </div>
                 </div>
                 <div className="list">
                     <h2>Out list</h2>
                     <div className="cards-container">
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
-                        <HistoryCard
-                            editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true"
-                        ></HistoryCard>
+                        {[...operations].filter(operation => operation.type == "out").map(
+                            operation => <HistoryCard
+                                editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true" operation={operation}
+                            ></HistoryCard>
+                        )}
                     </div>
                 </div>
             </div>
