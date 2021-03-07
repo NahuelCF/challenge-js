@@ -33,7 +33,7 @@ export const createOperation = async (concept, amount, type, date) => {
 
 export const updateOperation = async (concept, amount, date, id) => {
     const body = { concept: concept, amount: amount, date: date, id: id }
-    await fetch(SERVER_URL + "/createOperation", {
+    await fetch(SERVER_URL + "/updateOperation", {
         method: "PUT",
         body: JSON.stringify(body),
         headers: {

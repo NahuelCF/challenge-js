@@ -49,12 +49,12 @@ const createOperation = async (req, res) => {
 
 const updateOperation = async (req, res) => {
     try {
-        const { concept, amount, type, date, id } = req.body
+        const { concept, amount, date, id } = req.body
         const response = await pool.query(`
         UPDATE operations SET 
-        concept = $1, amount = $2, operationtype = $3, operationdate = $4 
-        WHERE id = $5;
-    `, [concept, amount, type, date, id])
+        concept = $1, amount = $2, operationdate = $3 
+        WHERE id = $4;
+    `, [concept, amount, date, id])
         res.status(200).json("Operation updated successfully")
     } catch (error) {
         res.status(500).json(error)
