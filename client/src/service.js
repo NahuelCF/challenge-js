@@ -19,3 +19,14 @@ export const getBalance = async () => {
         .then(item => balance = item)
     return balance
 }
+
+export const createOperation = async (concept, amount, type, date) => {
+    const body = { concept: concept, amount: amount, type: type, date: date }
+    await fetch(SERVER_URL + "/createOperation", {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+}
