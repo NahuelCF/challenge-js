@@ -2,7 +2,7 @@ import { HistoryCard } from "../history-card/HistoryCard"
 import "./NewOperation.css"
 
 import { useState, useEffect } from "react"
-import { getOperations } from "../../service"
+import { getOperations, createOperation } from "../../service"
 
 export const NewOperation = () => {
     const [editing, setEditing] = useState(false)
@@ -14,12 +14,13 @@ export const NewOperation = () => {
     const [type, setType] = useState("income")
 
     useEffect(() => {
-        const getOperationsLocal = async () => {
-            let operations = await getOperations()
-            setOperations(operations)
-        }
         getOperationsLocal()
     }, [])
+
+    const getOperationsLocal = async () => {
+        let operations = await getOperations()
+        setOperations(operations)
+    }
 
     const startEditing = () => {
         setEditing(true)
@@ -27,6 +28,11 @@ export const NewOperation = () => {
 
     const endEditing = () => {
         setEditing(false)
+    }
+
+    const saveOperation = async () => {
+        await createOperation(concept, amount, type, date)
+        getOperationsLocal()
     }
 
     return (
@@ -57,7 +63,7 @@ export const NewOperation = () => {
                             <option value="out">Out</option>
                         </select>
                     </div>
-                    <button style={{ gridColumn: "1/-1" }}>Save</button>
+                    <button style={{ gridColumn: "1/-1" }} onClick={() => saveOperation()}>Save</button>
                 </div>
             </div>
             <div className="lists-container">
