@@ -4,7 +4,7 @@ export class Operation {
         this.concept = concept
         this.amount = amount
         this.type = type
-        this.date = new Date(date).toLocaleDateString()
+        this.date = new Date(date).toISOString().split("T")[0].split("-").reverse().join("/")
     }
 
     static fromJSON(operationJSON) {
