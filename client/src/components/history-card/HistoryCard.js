@@ -2,15 +2,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 import "./HistoryCard.css"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { updateOperation } from '../../service'
 
 export const HistoryCard = (props) => {
 
+    const operation = props.operation
     const [display, setDisplay] = useState("none")
     const [concept, setConcept] = useState("")
     const [amount, setAmount] = useState("")
     const [date, setDate] = useState("")
-    const operation = props.operation
+
+    useEffect(() => {
+        init()
+    }, [])
+
+    const init = () => {
+        setConcept(operation.concept)
+        setAmount(operation.amount)
+        setDate(operation.date)
+    }
 
     const buttonsTemplate = () => {
         if (props.addButtons) {
@@ -40,22 +51,19 @@ export const HistoryCard = (props) => {
     }
 
     const resetStates = () => {
-        setConcept("")
-        setAmount("")
-        setDate("")
-        console.log("States reseted")
+        init()
     }
 
-    const updateOperation = () => {
-        console.log("Operation updated!")
+    const updateOperationLocal = async () => {
+        await updateOperation(concept, amount, date, operation.id)
     }
 
     return (
         <div className="card-container">
             <div className="history-card">
-                <div>${operation.amount}</div>
+                <div>${amount}</div>
                 <div>{operation.type}</div>
-                <div>{operation.date}</div>
+                <div>{date}</div>
                 {buttonsTemplate()}
             </div>
 
@@ -63,17 +71,23 @@ export const HistoryCard = (props) => {
                 <div>
                     <div className="form-input">
                         <label htmlFor="concept">Write a concept:</label>
-                        <input name="concept" type="text" placeholder="Concept"></input>
+                        <input value={concept} name="concept" type="text" placeholder="Concept"
+                            onChange={event => setConcept(event.target.value)}
+                        ></input>
                     </div>
                     <div className="form-input">
                         <label htmlFor="amount">Type an amount:</label>
-                        <input name="amount" type="number"></input>
+                        <input value={amount} name="amount" type="number"
+                            onChange={event => setAmount(event.target.value)}
+                        ></input>
                     </div>
                 </div>
                 <div>
                     <div className="form-input">
                         <label htmlFor="date">Choose a date:</label>
-                        <input name="date" type="date"></input>
+                        <input value={date} name="date" type="date"
+                            onChange={event => setDate(event.target.value)}
+                        ></input>
                     </div>
                     <div className="card-buttons-edit">
                         <button onClick={() => {
@@ -82,7 +96,7 @@ export const HistoryCard = (props) => {
                             props.endEditing()
                         }}>Cancel</button>
                         <button onClick={() => {
-                            updateOperation()
+                            updateOperationLocal()
                             changeDisplay(true)
                             props.endEditing()
                         }}>Save</button>
