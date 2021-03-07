@@ -8,6 +8,10 @@ export const NewOperation = () => {
     const [editing, setEditing] = useState(false)
 
     const [operations, setOperations] = useState([])
+    const [concept, setConcept] = useState("")
+    const [amount, setAmount] = useState("")
+    const [date, setDate] = useState("")
+    const [type, setType] = useState("income")
 
     useEffect(() => {
         const getOperationsLocal = async () => {
@@ -32,24 +36,28 @@ export const NewOperation = () => {
                 <div className="form-container">
                     <div className="form-input">
                         <label htmlFor="concept">Write a concept:</label>
-                        <input name="concept" type="text" placeholder="Concept"></input>
+                        <input name="concept" type="text" placeholder="Concept"
+                            value={concept}
+                            onChange={(event) => setConcept(event.target.value)}></input>
                     </div>
                     <div className="form-input">
                         <label htmlFor="amount">Type an amount:</label>
-                        <input name="amount" type="number"></input>
+                        <input name="amount" type="number" value={amount}
+                            onChange={(event) => setAmount(event.target.value)}></input>
                     </div>
                     <div className="form-input">
                         <label htmlFor="date">Choose a date:</label>
-                        <input name="date" type="date"></input>
+                        <input name="date" type="date" value={date}
+                            onChange={event => setDate(event.target.value)}></input>
                     </div>
                     <div className="form-input">
                         <label htmlFor="type">Select a type:</label>
-                        <select style={{ width: "11rem" }} name="type">
-                            <option>Income</option>
-                            <option>Out</option>
+                        <select style={{ width: "11rem" }} name="type" onChange={event => setType(event.target.value)}>
+                            <option value="income">Income</option>
+                            <option value="out">Out</option>
                         </select>
                     </div>
-                    <button onClick={() => console.log(editing)} style={{ gridColumn: "1/-1" }}>Done</button>
+                    <button style={{ gridColumn: "1/-1" }}>Save</button>
                 </div>
             </div>
             <div className="lists-container">
