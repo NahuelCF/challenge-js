@@ -4,7 +4,7 @@ export class Operation {
         this.concept = concept
         this.amount = amount
         this.type = type
-        this.date = date
+        this.date = new Date(date).toLocaleDateString()
     }
 
     static fromJSON(operationJSON) {
@@ -12,8 +12,8 @@ export class Operation {
             operationJSON.id,
             operationJSON.concept,
             operationJSON.amount,
-            operationJSON.type,
-            operationJSON.date
+            operationJSON.operationtype,
+            operationJSON.operationdate
         )
     }
 }
