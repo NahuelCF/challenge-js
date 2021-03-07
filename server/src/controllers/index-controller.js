@@ -13,8 +13,8 @@ const getOperations = async (req, res) => {
     try {
         const response = await pool.query("SELECT * FROM operations")
         res.status(200).json(response.rows)
-    } catch (e) {
-        res.status(500).json("Internal Server Error")
+    } catch (error) {
+        res.status(500).json(error)
     }
 }
 
@@ -35,7 +35,25 @@ const getBalance = async (req, res) => {
     }
 }
 
+const createOperation = async (req, res) => {
+    try {
+        const { concept, amount, type, date } = req.body
+        const response = await pool.query(`
+            INSERT INTO operations (concept,amount,operationtype,operationdate) VALUES ($1,$2,$3,$4)
+        `, [concept, amount, type, date])
+        res.json({
+            message: "Operation added successfully",
+            body: {
+                operation: { concept, amount, type, date }
+            }
+        })
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
 module.exports = {
     getOperations,
-    getBalance
+    getBalance,
+    createOperation
 }
