@@ -29,7 +29,7 @@ export const Home = (props) => {
                 </h1>
             </div>
             <div className="history-container">
-                {[...operations].map(operation => <HistoryCard operation={operation} />)}
+                {[...operations].map(operation => <HistoryCard key={operation.id} operation={operation} />)}
             </div>
         </div>
     )

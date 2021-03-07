@@ -58,7 +58,12 @@ export const NewOperation = () => {
                     <div className="cards-container">
                         {[...operations].filter(operation => operation.type == "income").map(
                             operation => <HistoryCard
-                                editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true" operation={operation}
+                                key={operation.id}
+                                editing={editing}
+                                startEditing={startEditing}
+                                endEditing={endEditing}
+                                addButtons="true"
+                                operation={operation}
                             ></HistoryCard>
                         )}
                     </div>
@@ -68,7 +73,12 @@ export const NewOperation = () => {
                     <div className="cards-container">
                         {[...operations].filter(operation => operation.type == "out").map(
                             operation => <HistoryCard
-                                editing={editing} startEditing={startEditing} endEditing={endEditing} addButtons="true" operation={operation}
+                                key={operation.id}
+                                editing={editing}
+                                startEditing={startEditing}
+                                endEditing={endEditing}
+                                addButtons="true"
+                                operation={operation}
                             ></HistoryCard>
                         )}
                     </div>
