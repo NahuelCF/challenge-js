@@ -38,7 +38,7 @@ const getBalance = async (req, res) => {
 const createOperation = async (req, res) => {
     try {
         const { concept, amount, type, date } = req.body
-        const response = await pool.query(`
+        await pool.query(`
             INSERT INTO operations (concept,amount,operationtype,operationdate) VALUES ($1,$2,$3,$4)
         `, [concept, amount, type, date])
         res.status(200).json("Operation added successfully")
@@ -50,7 +50,7 @@ const createOperation = async (req, res) => {
 const updateOperation = async (req, res) => {
     try {
         const { concept, amount, date, id } = req.body
-        const response = await pool.query(`
+        await pool.query(`
         UPDATE operations SET 
         concept = $1, amount = $2, operationdate = $3 
         WHERE id = $4;
@@ -61,9 +61,22 @@ const updateOperation = async (req, res) => {
     }
 }
 
+const deleteOperation = async (req, res) => {
+    const { id } = req.params
+    try {
+        await pool.query(`
+            DELETE FROM operations WHERE id = $1;
+        `, [id])
+        res.status(200).json("Operation deleted successfully")
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
 module.exports = {
     getOperations,
     getBalance,
     createOperation,
-    updateOperation
+    updateOperation,
+    deleteOperation
 }

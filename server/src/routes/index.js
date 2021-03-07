@@ -1,4 +1,4 @@
-const { getOperations, getBalance, createOperation, updateOperation } = require('../controllers/index-controller')
+const { getOperations, getBalance, createOperation, updateOperation, deleteOperation } = require('../controllers/index-controller')
 
 // Permite definir rutas para el servidor
 const { Router } = require("express")
@@ -10,5 +10,6 @@ router.get("/getOperations", getOperations)
 router.get("/getBalance", getBalance)
 router.post("/createOperation", createOperation)
 router.put("/updateOperation", updateOperation)
+router.delete("/deleteOperation/:id", deleteOperation)
 
 module.exports = router
