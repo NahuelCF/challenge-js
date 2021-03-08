@@ -9,6 +9,18 @@ const config = {
 
 const pool = new Pool(config)
 
+const getOperationById = async (req, res) => {
+    const id = req.params.id
+    try {
+        const response = await pool.query(`
+            SELECT * FROM operations WHERE id = $1;
+        `, [id])
+        res.status(200).json(response.rows[0])
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
 const getOperations = async (req, res) => {
     try {
         const response = await pool.query("SELECT * FROM operations")
@@ -78,5 +90,6 @@ module.exports = {
     getBalance,
     createOperation,
     updateOperation,
-    deleteOperation
+    deleteOperation,
+    getOperationById
 }
