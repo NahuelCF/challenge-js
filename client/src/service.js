@@ -2,6 +2,14 @@ import { Operation } from "./domain/operation"
 
 const SERVER_URL = "http://localhost:3001"
 
+export const getOperationById = async (id) => {
+    let operation
+    await fetch(SERVER_URL + "/getOperation/" + id)
+        .then(result => result.json())
+        .then(item => operation = Operation.fromJSON(item))
+    return operation
+}
+
 export const getOperations = async () => {
     let operations = []
     await fetch(SERVER_URL + "/getOperations")
