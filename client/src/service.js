@@ -49,3 +49,9 @@ export const updateOperation = async (concept, amount, date, id) => {
         }
     })
 }
+
+export const deleteOperation = async (id) => {
+    await fetch(SERVER_URL + "/deleteOperation/" + id, {
+        method: "DELETE"
+    })
+}
