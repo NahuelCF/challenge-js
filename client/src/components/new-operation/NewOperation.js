@@ -78,6 +78,7 @@ export const NewOperation = () => {
                                 endEditing={endEditing}
                                 addButtons="true"
                                 operation={operation}
+                                refreshPage={getOperationsLocal}
                             ></HistoryCard>
                         )}
                     </div>
@@ -93,6 +94,7 @@ export const NewOperation = () => {
                                 endEditing={endEditing}
                                 addButtons="true"
                                 operation={operation}
+                                refreshPage={getOperationsLocal}
                             ></HistoryCard>
                         )}
                     </div>

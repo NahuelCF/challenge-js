@@ -62,6 +62,7 @@ export const HistoryCard = (props) => {
 
     const deleteOperationLocal = async () => {
         await deleteOperation(operation.id)
+        props.refreshPage()
     }
 
     return (
