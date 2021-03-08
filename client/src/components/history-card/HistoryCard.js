@@ -3,7 +3,7 @@ import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 import "./HistoryCard.css"
 import { useState } from 'react'
-import { getOperationById, updateOperation } from '../../service'
+import { deleteOperation, getOperationById, updateOperation } from '../../service'
 
 export const HistoryCard = (props) => {
 
@@ -26,7 +26,7 @@ export const HistoryCard = (props) => {
                         <FontAwesomeIcon icon={faEdit} />
                     </button>
                     <button className="card-button">
-                        <FontAwesomeIcon icon={faTrashAlt} />
+                        <FontAwesomeIcon onClick={() => deleteOperationLocal()} icon={faTrashAlt} />
                     </button>
                 </div>
             )
@@ -58,6 +58,10 @@ export const HistoryCard = (props) => {
     const editingDone = () => {
         changeDisplay(true)
         props.endEditing()
+    }
+
+    const deleteOperationLocal = async () => {
+        await deleteOperation(operation.id)
     }
 
     return (
