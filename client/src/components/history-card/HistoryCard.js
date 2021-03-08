@@ -3,19 +3,20 @@ import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 import "./HistoryCard.css"
 import { useState, useEffect } from 'react'
-import { updateOperation } from '../../service'
+import { getOperationById, updateOperation } from '../../service'
 
 export const HistoryCard = (props) => {
 
-    const operation = props.operation
+    const [operation, setOperation] = useState(props.operation)
     const [display, setDisplay] = useState("none")
-    const [concept, setConcept] = useState("")
-    const [amount, setAmount] = useState("")
-    const [date, setDate] = useState("")
+    const [concept, setConcept] = useState(operation.concept)
+    const [amount, setAmount] = useState(operation.amount)
+    const [date, setDate] = useState(operation.date)
 
-    useEffect(() => {
-        init()
-    }, [])
+    const refreshOperation = async () => {
+        const operationUpdated = await getOperationById(operation.id)
+        setOperation(operationUpdated)
+    }
 
     const init = () => {
         setConcept(operation.concept)
@@ -66,9 +67,9 @@ export const HistoryCard = (props) => {
     return (
         <div className="card-container">
             <div className="history-card">
-                <div>${amount}</div>
+                <div>${operation.amount}</div>
                 <div>{operation.type}</div>
-                <div>{date}</div>
+                <div>{operation.date}</div>
                 {buttonsTemplate()}
             </div>
 
@@ -102,6 +103,7 @@ export const HistoryCard = (props) => {
                         <button onClick={() => {
                             updateOperationLocal()
                             editingDone()
+                            refreshOperation()
                         }}>Save</button>
                     </div>
                 </div>
