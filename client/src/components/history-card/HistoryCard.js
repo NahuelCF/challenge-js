@@ -58,6 +58,11 @@ export const HistoryCard = (props) => {
         await updateOperation(concept, amount, date, operation.id)
     }
 
+    const editingDone = () => {
+        changeDisplay(true)
+        props.endEditing()
+    }
+
     return (
         <div className="card-container">
             <div className="history-card">
@@ -92,13 +97,11 @@ export const HistoryCard = (props) => {
                     <div className="card-buttons-edit">
                         <button onClick={() => {
                             resetStates()
-                            changeDisplay(true)
-                            props.endEditing()
+                            editingDone()
                         }}>Cancel</button>
                         <button onClick={() => {
                             updateOperationLocal()
-                            changeDisplay(true)
-                            props.endEditing()
+                            editingDone()
                         }}>Save</button>
                     </div>
                 </div>
