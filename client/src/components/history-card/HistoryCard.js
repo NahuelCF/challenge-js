@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 import "./HistoryCard.css"
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { getOperationById, updateOperation } from '../../service'
 
 export const HistoryCard = (props) => {
@@ -16,12 +16,6 @@ export const HistoryCard = (props) => {
     const refreshOperation = async () => {
         const operationUpdated = await getOperationById(operation.id)
         setOperation(operationUpdated)
-    }
-
-    const init = () => {
-        setConcept(operation.concept)
-        setAmount(operation.amount)
-        setDate(operation.date)
     }
 
     const buttonsTemplate = () => {
@@ -52,7 +46,9 @@ export const HistoryCard = (props) => {
     }
 
     const resetStates = () => {
-        init()
+        setConcept(operation.concept)
+        setAmount(operation.amount)
+        setDate(operation.date)
     }
 
     const updateOperationLocal = async () => {
