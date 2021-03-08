@@ -35,6 +35,24 @@ export const NewOperation = () => {
         getOperationsLocal()
     }
 
+    const cardTypeTemplate = (type) => {
+        return (
+            <div className="cards-container">
+                {[...operations].filter(operation => operation.type == type).map(
+                    operation => <HistoryCard
+                        key={operation.id}
+                        editing={editing}
+                        startEditing={startEditing}
+                        endEditing={endEditing}
+                        addButtons="true"
+                        operation={operation}
+                        refreshPage={getOperationsLocal}
+                    ></HistoryCard>
+                )}
+            </div>
+        )
+    }
+
     return (
         <div>
             <div className="newOperation-container">
@@ -69,35 +87,11 @@ export const NewOperation = () => {
             <div className="lists-container">
                 <div className="list">
                     <h2>Income List</h2>
-                    <div className="cards-container">
-                        {[...operations].filter(operation => operation.type == "income").map(
-                            operation => <HistoryCard
-                                key={operation.id}
-                                editing={editing}
-                                startEditing={startEditing}
-                                endEditing={endEditing}
-                                addButtons="true"
-                                operation={operation}
-                                refreshPage={getOperationsLocal}
-                            ></HistoryCard>
-                        )}
-                    </div>
+                    {cardTypeTemplate("income")}
                 </div>
                 <div className="list">
                     <h2>Out list</h2>
-                    <div className="cards-container">
-                        {[...operations].filter(operation => operation.type == "out").map(
-                            operation => <HistoryCard
-                                key={operation.id}
-                                editing={editing}
-                                startEditing={startEditing}
-                                endEditing={endEditing}
-                                addButtons="true"
-                                operation={operation}
-                                refreshPage={getOperationsLocal}
-                            ></HistoryCard>
-                        )}
-                    </div>
+                    {cardTypeTemplate("out")}
                 </div>
             </div>
         </div >
