@@ -69,7 +69,7 @@ export const HistoryCard = (props) => {
         <div className="card-container">
             <div className="history-card">
                 <div>${operation.amount}</div>
-                <div>{operation.type}</div>
+                <div>{operation.concept}</div>
                 <div>{operation.date}</div>
                 {buttonsTemplate()}
             </div>
