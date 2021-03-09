@@ -33,6 +33,13 @@ export const HistoryCard = (props) => {
         }
     }
 
+    const colorTemplate = () => {
+        if (operation.type == "income") {
+            return "#44ba57"
+        } else {
+            return "#d05757"
+        }
+    }
 
     const changeDisplay = (editDone) => {
         if (!props.editing || editDone) {
@@ -67,7 +74,7 @@ export const HistoryCard = (props) => {
 
     return (
         <div className="card-container">
-            <div className="history-card">
+            <div style={{ backgroundColor: colorTemplate() }} className="history-card">
                 <div>${operation.amount}</div>
                 <div>{operation.concept}</div>
                 <div>{operation.date}</div>
