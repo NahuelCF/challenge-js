@@ -4,7 +4,7 @@ import "./NewOperation.css"
 import { useState, useEffect } from "react"
 import { getOperations, createOperation } from "../../service"
 
-export const NewOperation = () => {
+export const NewOperation = (props) => {
     const [editing, setEditing] = useState(false)
 
     const [operations, setOperations] = useState([])
@@ -35,6 +35,10 @@ export const NewOperation = () => {
         getOperationsLocal()
     }
 
+    const goToHome = () => {
+        props.history.push("/home")
+    }
+
     const cardTypeTemplate = (type) => {
         return (
             <div className="cards-container">
@@ -56,7 +60,12 @@ export const NewOperation = () => {
     return (
         <div>
             <div className="newOperation-container">
-                <div className="title">Create a new operation</div>
+                <div >
+                    <div style={{ display: "flex", justifyContent: "flex-start", padding: "1rem 0 0 1rem" }}>
+                        <button onClick={() => goToHome()}>Home</button>
+                    </div>
+                    <div className="title">Create a new operation</div>
+                </div>
                 <div className="form-container">
                     <div className="form-input">
                         <label htmlFor="concept">Write a concept:</label>
