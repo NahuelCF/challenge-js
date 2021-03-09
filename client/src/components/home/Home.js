@@ -25,7 +25,9 @@ export const Home = (props) => {
                 <h2>Balance</h2>
                 <div className="balance">${balance}</div>
                 <h1>
-                    <button onClick={() => props.history.push("/new-operation")}>Go to ABM</button>
+                    <button onClick={() => props.history.push("/new-operation")}>
+                        Create/Edit/Delete an Operation
+                    </button>
                 </h1>
             </div>
             <div className="history-container">
