@@ -16,6 +16,7 @@ export const getOperations = async () => {
         .then(result => result.json())
         .then((items) => {
             operations = items.map(operation => Operation.fromJSON(operation))
+                .sort((a, b) => a.id - b.id)
         })
     return operations
 }
